@@ -1,0 +1,14 @@
+Windows Registry Editor Version 5.00
+
+;
+; Update the Binding Kit registry keys with empty DllSurrogate data items. This
+; makes the Binding Kit 32-bit COM type library available through a Dllhost process.
+; https://msdn.microsoft.com/en-us/library/ms691260(v=vs.85).aspx
+;
+[HKEY_CLASSES_ROOT\Wow6432Node\AppID\{94A7D612-163C-4e80-8816-6129FD076C0C}]
+@="sik2"
+"DllSurrogate"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Classes\AppID\{94A7D612-163C-4e80-8816-6129FD076C0C}]
+@="sik2"
+"DllSurrogate"=""

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>README for IndigoVision Binding Kit</title>
+  <style>
+    body { font-size:10pt; font-family:Arial;}
+    p,li { margin: 3pt 0 6pt 0; }
+    h1 { font-size: 12pt; font-weight: bold; margin: 24pt 0 6pt 0; }
+    h2 { font-size: 11pt; font-weight: bold; margin: 11pt 0 6pt 0; }
+    h3 { font-size: 10pt; font-weight: bold; margin: 9pt 0 3pt 0; }
+    .bug_id { font-style: italic; }
+  </style>
+</head>
+<body>
+  <h1>
+    README for IndigoVision Binding Kit 2.14, February 2021</h1>
+
+    <p>Copyright &#169; IndigoVision Limited</p>
+
+    <p>
+    IndigoVision is a trademark of IndigoVision Limited and is registered in
+    certain countries. IndigoUltra, IndigoPro, IndigoLite, Integra and
+    CyberVigilant are registered trademarks of IndigoVision Limited. Camera
+    Gateway is an unregistered trademark of IndigoVision Limited. All other
+    product names referred to in this readme are trademarks of their respective
+    owners.
+    </p>
+
+    <h1>About the Binding Kit</h1>
+    <p>
+        The IndigoVision Binding Kit enables binding software to be developed that
+        integrates external systems such as alarm management and access control systems with
+        IndigoVision Control Center. It enables developers to write applications
+        that forward external alarm events to, or receive zone (or detector) notifications from, an
+        IndigoVision Alarm Server (NVR-AS). Zone notifications can notify state changes such as
+        alarmed, acknowledged or cleared. IvBind provides a C API as well as a COM
+        interface to allow scripts or applications to be written in a wide variety of
+        programming languages. Refer to the help files in the docs directory for
+        further information.</p>
+
+    <h1>Installation Instructions</h1>
+    <p>
+        Before the IvBind2 COM interface can be used, IvBind2.dll must be extracted from IvBind2.zip
+        on the IndigoVision Product CD then registered with Windows. To register the IvBind2
+        COM interface with Windows, do the following:
+    </p>
+    <h3>On 32-bit operating systems</h3>
+    <ol>
+        <li>Open a Command Prompt as an administrator and navigate to the directory that you extracted
+            IvBind2.dll to.</li>
+        <li>Type <em>regsvr32.exe ivbind2.dll</em> then Enter.</li>
+    </ol>
+    
+    <h3>On 64-bit operating systems</h3>
+    <ol>
+        <li>Open a Command Prompt as an administrator and navigate to the directory that you extracted
+            IvBind2.dll to.</li>
+        <li>Type <em>C:\Windows\SysWOW64\regsvr32.exe ivbind2.dll</em> then Enter.</li>
+        <li>Navigate to the ivbind2\registry directory.</li>
+        <li>To enable use of DllHost.exe as a surrogate run <em>comsurrogate.reg</em> and accept the warnings from windows regarding the changes to your registry.</li>
+    </ol>
+
+    <h1>Important Information about Binding Kit 2.14</h1>
+	<h2>NVR-AS Compatibility</h2>
+	<p>Binding Kit 2.14 has been designed to operate with NVR-AS 15.2 and later and can query all detector types from those versions. It is not recommended to use Binding Kit 2.13 with older NVR-AS versions as not all detector types would be seen. Specifically ONVIF Basic Analytics and ONVIF Digital Input detector types would not be seen.</p>
+    
+    <h1>What's new in Binding Kit 2.14</h1>
+
+    <h2>DNA Proxy Support</h2>
+    <p>The Binding Kit SDK can now communicate with Alarm Servers via the IndigoVision DNA Proxy in deployments where there is no direct network connectivity. To use a DNA Proxy, call <code>SetDnaProxy</code> before communicating with the Alarm Server. If a DNA Proxy is not required, no updates are necessary.</p>
+	
+	<p>The IvZoneMonitor and IvDetectorMonitor samples have been updated to demonstrate the use of <code>SetDnaProxy</code>.</p>
+
+    <h1>Known Issues</h1>
+
+    <ul>
+        <li>NVR Fault detectors will only report a change
+        to the detector when a new fault condition occurs or when all
+        faults are cleared. If a fault condition clears but other fault
+        conditions remain no update notification will be received.
+        </li>
+    </ul>
+
+</body>
+</html>
